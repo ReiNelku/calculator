@@ -30,3 +30,17 @@ function operate(firstOperand, secondOperand, operator) {
       return divide(firstOperand, secondOperand);
   }
 }
+
+let display = document.querySelector(".display");
+
+document.querySelectorAll(".operand").forEach((operand) =>
+  operand.addEventListener("click", (event) => {
+    if (display.textContent.length === 13) {
+      return;
+    } else if (display.textContent === "0") {
+      display.textContent = event.target.textContent;
+    } else {
+      display.textContent += event.target.textContent;
+    }
+  })
+);
