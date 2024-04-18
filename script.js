@@ -14,12 +14,12 @@ function divide(a, b) {
   return a / b;
 }
 
-let firstNumber;
-let operator;
-let secondNumber;
+let firstNumber = null;
+let operator = null;
+let secondNumber = null;
 
-function operate(firstOperand, secondOperand, operator) {
-  switch (operator) {
+function operate(firstOperand, secondOperand, operatorValue) {
+  switch (operatorValue) {
     case "+":
       return add(firstOperand, secondOperand);
     case "-":
