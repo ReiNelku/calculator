@@ -64,7 +64,17 @@ const divideButton = document.querySelector("#divide");
 
 function calculate(operatorValue) {
   if (firstNumber !== null && secondNumber !== null) {
-    display.textContent = operate(+firstNumber, +secondNumber, operator);
+    let result = operate(+firstNumber, +secondNumber, operator);
+
+    // If result overflows the display
+    if (result.toString().length > 13) {
+      // Calculate how many digits are before the decimal point
+      const factor = result.toString().split(".")[0].length;
+      // Round the result so it doesn't overflow the display
+      result = result.toFixed(12 - factor);
+    }
+
+    display.textContent = result;
     firstNumber = display.textContent;
     operator = operatorValue;
     isResult = true;
@@ -87,7 +97,18 @@ equalButton.addEventListener("click", () => {
   if (operator === null || secondNumber === null) {
     return;
   }
-  display.textContent = operate(+firstNumber, +secondNumber, operator);
+
+  let result = operate(+firstNumber, +secondNumber, operator);
+
+  // If result overflows the display
+  if (result.toString().length > 13) {
+    // Calculate how many digits are before the decimal point
+    const factor = result.toString().split(".")[0].length;
+    // Round the result so it doesn't overflow the display
+    result = result.toFixed(12 - factor);
+  }
+
+  display.textContent = result;
   isResult = true;
 });
 
