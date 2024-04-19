@@ -32,15 +32,23 @@ function operate(firstOperand, secondOperand, operatorValue) {
 }
 
 let display = document.querySelector(".display");
+let isResult = false;
 
 document.querySelectorAll(".operand").forEach((operand) =>
   operand.addEventListener("click", (event) => {
     if (display.textContent.length === 13) {
       return;
-    } else if (display.textContent === "0") {
+    } else if (display.textContent === "0" || isResult === true) {
       display.textContent = event.target.textContent;
+      isResult = false;
     } else {
       display.textContent += event.target.textContent;
+    }
+
+    if (operator === null) {
+      firstNumber = display.textContent;
+    } else {
+      secondNumber = display.textContent;
     }
   })
 );
