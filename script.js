@@ -12,9 +12,9 @@ function multiply(a, b) {
 
 function divide(a, b) {
   if (b === 0) {
-    return "Nah, I'd win"
+    return "Nah, I'd win";
   }
-  
+
   return a / b;
 }
 
@@ -81,6 +81,7 @@ multiplyButton.addEventListener("click", () => calculate("*"));
 divideButton.addEventListener("click", () => calculate("/"));
 
 const equalButton = document.querySelector("#equal");
+const decimalButton = document.querySelector("#decimal");
 
 equalButton.addEventListener("click", () => {
   if (operator === null || secondNumber === null) {
@@ -88,6 +89,14 @@ equalButton.addEventListener("click", () => {
   }
   display.textContent = operate(+firstNumber, +secondNumber, operator);
   isResult = true;
+});
+
+decimalButton.addEventListener("click", () => {
+  if (display.textContent.includes(".")) {
+    return;
+  }
+
+  display.textContent = display.textContent + ".";
 });
 
 const clearButton = document.querySelector("#clear");
