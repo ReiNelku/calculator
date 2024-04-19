@@ -84,3 +84,33 @@ equalButton.addEventListener("click", () => {
   }
   display.textContent = operate(+firstNumber, +secondNumber, operator);
 });
+
+const clearButton = document.querySelector("#clear");
+const signButton = document.querySelector("#sign");
+const percentButton = document.querySelector("#percent");
+
+clearButton.addEventListener("click", () => {
+  firstNumber = null;
+  operator = null;
+  secondNumber = null;
+
+  display.textContent = 0;
+});
+
+signButton.addEventListener("click", () => {
+  if (display.textContent === "0") {
+    return;
+  }
+
+  display.textContent = +display.textContent * -1;
+
+  if (operator === null) {
+    firstNumber = display.textContent;
+  } else {
+    secondNumber = display.textContent;
+  }
+});
+
+percentButton.addEventListener("click", () => {
+  display.textContent = +display.textContent / 100;
+});
