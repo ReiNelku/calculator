@@ -83,6 +83,7 @@ equalButton.addEventListener("click", () => {
     return;
   }
   display.textContent = operate(+firstNumber, +secondNumber, operator);
+  isResult = true;
 });
 
 const clearButton = document.querySelector("#clear");
