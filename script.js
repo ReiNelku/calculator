@@ -52,3 +52,26 @@ document.querySelectorAll(".operand").forEach((operand) =>
     }
   })
 );
+
+const addButton = document.querySelector("#add");
+const subtractButton = document.querySelector("#subtract");
+const multiplyButton = document.querySelector("#multiply");
+const divideButton = document.querySelector("#divide");
+
+function calculate(operatorValue) {
+  if (firstNumber !== null && secondNumber !== null) {
+    display.textContent = operate(+firstNumber, +secondNumber, operator);
+    firstNumber = display.textContent;
+    operator = operatorValue;
+    isResult = true;
+    return;
+  }
+
+  operator = operatorValue;
+  display.textContent = "";
+}
+
+addButton.addEventListener("click", () => calculate("+"));
+subtractButton.addEventListener("click", () => calculate("-"));
+multiplyButton.addEventListener("click", () => calculate("*"));
+divideButton.addEventListener("click", () => calculate("/"));
