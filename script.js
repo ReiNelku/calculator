@@ -75,3 +75,12 @@ addButton.addEventListener("click", () => calculate("+"));
 subtractButton.addEventListener("click", () => calculate("-"));
 multiplyButton.addEventListener("click", () => calculate("*"));
 divideButton.addEventListener("click", () => calculate("/"));
+
+const equalButton = document.querySelector("#equal");
+
+equalButton.addEventListener("click", () => {
+  if (operator === null || secondNumber === null) {
+    return;
+  }
+  display.textContent = operate(+firstNumber, +secondNumber, operator);
+});
